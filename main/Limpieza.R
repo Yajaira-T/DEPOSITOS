@@ -4,7 +4,7 @@ library(here)
 
 # 1. Leer la hoja BAL
 datos <- read_excel(
-  here("DATA", "SERIES SUBSISTEMA BANCA PRIVADA 2026_08.xlsx"),
+  here("DATA", "Data_raw.xlsx"),
   sheet = "BAL",
   skip = 5
 )
