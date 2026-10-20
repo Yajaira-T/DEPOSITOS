@@ -24,7 +24,7 @@ depositos <- depositos |>
 # 4. Convertir la fecha y crear la variable mensual
 depositos <- depositos |>
   mutate(
-    fecha = as.Date(as.numeric(fecha), origin = "1899-12-31"), #Interpreta estos números como fechas de Excel
+    fecha = as.Date(as.numeric(fecha), origin = "1899-12-30"), #Interpreta estos números como fechas de Excel
     mes = yearmonth(fecha)
   ) |>
   select(mes, deposito)
@@ -36,3 +36,10 @@ depositos <- depositos |>
 depositos
 
 class(depositos)
+# 6. Guardar la base de datos limpia en formato CSV
+write.csv(
+  depositos |>
+    mutate(mes = as.Date(mes)),
+  file = here("DATA", "Data.csv"),
+  row.names = FALSE
+)
